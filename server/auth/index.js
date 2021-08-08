@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 exports.signin = (req, res) => {
+  console.log(req.body)
   Users.findOne({
     where: {
       username: req.body.username

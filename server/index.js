@@ -18,6 +18,8 @@ db.sequelize.sync({force: true}).then(() => {
 // for prod
 // db.sequelize.sync();
 
+app.use(bodyParser.json());
+
 app.post("/signin", auth.signin);
 
 app.listen(3001, () => {
