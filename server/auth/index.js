@@ -1,12 +1,12 @@
 const db = require("../db");
 const config = require("./config");
-const User = db.user;
+const Users = db.users;
 
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 exports.signin = (req, res) => {
-  User.findOne({
+  Users.findOne({
     where: {
       username: req.body.username
     }
