@@ -1,15 +1,23 @@
-// server/index.js
-
 const express = require("express");
-
-const PORT = process.env.PORT || 3001;
+const bodyParser = require("body-parser");
+// const cors = require("cors");
+const auth = require("./auth")
 
 const app = express();
 
-app.get("/api", (req, res) => {
-    res.json({ message: "Hello from server!" });
-  });
+const db = require("./db");
 
-app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
+// for dev
+db.sequelize.sync({force: true}).then(() => {
+    console.log('Drop and Resync Db');
+    initial();
+});
+
+// for prod
+// db.sequelize.sync();
+
+app.post("/signin", auth.signin);
+
+app.listen(3001, () => {
+  console.log(`Server listening on ${3001}`);
 });
