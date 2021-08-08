@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 // const cors = require("cors");
 const auth = require("./auth")
 const bcrypt = require("bcrypt");
+const cors = require("cors");
 
 const app = express();
 
@@ -19,6 +20,12 @@ db.sequelize.sync({force: true}).then(() => {
 // db.sequelize.sync();
 
 app.use(bodyParser.json());
+
+const corsOptions = {
+  origin: "http://localhost:3000"
+};
+
+app.use(cors(corsOptions));
 
 app.post("/signin", auth.signin);
 

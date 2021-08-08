@@ -6,39 +6,28 @@ import {
   Link
 } from "react-router-dom";
 
+import SignIn from './components/SignIn'
+
 export default function App() {
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
-
         <Switch>
           <Route path="/treatments">
-            <About />
+            <Treaments />
           </Route>
           <Route path="/appointments">
-            <Users />
+            <Appointments />
           </Route>
           <Route path="/dashboard">
-            <Users />
+            <Dashboard />
           </Route>
-          <Route path="/">
+          <Route path="/home">
             <Home />
           </Route>
+          <Route path="/">
+            <SignIn />
+          </Route>
         </Switch>
-      </div>
     </Router>
   );
 }
@@ -47,10 +36,14 @@ function Home() {
   return <h2>Home</h2>;
 }
 
-function About() {
-  return <h2>About</h2>;
+function Appointments() {
+  return <h2>Appointments</h2>;
 }
 
-function Users() {
-  return <h2>Users</h2>;
+function Treaments() {
+  return <h2>Treaments</h2>;
+}
+
+function Dashboard() {
+  return <h2>Dashboard</h2>;
 }
